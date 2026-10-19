@@ -11,7 +11,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { PRIORITY_LABEL, STATUS_LABEL, TASK_PRIORITY, TASK_STATUS } from "@/redux/features/tasks";
+
 
 export function TaskFormDialog({ open, mode, onClose }) {
   const { register, handleSubmit, control } = useForm();
@@ -77,6 +79,18 @@ export function TaskFormDialog({ open, mode, onClose }) {
                     <SelectTrigger>
                       <SelectValue placeholder="Select status" />
                     </SelectTrigger>
+                    <SelectContent>
+                      {/* <SelectItem value="pending">Pending</SelectItem>
+                      <SelectItem value="in-progress">In Progress</SelectItem>
+                      <SelectItem value="done">Done</SelectItem> */}
+                      {
+                        TASK_STATUS.map((status) => (
+                          <SelectItem key={status} value={status}>
+                            {STATUS_LABEL[status]}
+                          </SelectItem>
+                        ))
+                      }
+                    </SelectContent>
                   </Select>
                 )}
               />
@@ -92,6 +106,15 @@ export function TaskFormDialog({ open, mode, onClose }) {
                     <SelectTrigger>
                       <SelectValue placeholder="Select priority" />
                     </SelectTrigger>
+                    <SelectContent>
+                      {
+                        TASK_PRIORITY.map((priority) => (
+                          <SelectItem key={priority} value={priority}>
+                            {PRIORITY_LABEL[priority]}
+                          </SelectItem>
+                        ))
+                      }
+                    </SelectContent>
                   </Select>
                 )}
               />

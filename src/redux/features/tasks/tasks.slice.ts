@@ -2,19 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 interface initialState {
-   name: string,
+   title: string,
    description: string,
    priority: string,
    status: string
 }
 
-const initialState = {
-   name: "",
-   description: "",
-   priority: "medium",
-   status: "pending",
-}
-
+const initialState: initialState[] = []
 const tasksSlice = createSlice({
    name: "tasks",
    initialState,
